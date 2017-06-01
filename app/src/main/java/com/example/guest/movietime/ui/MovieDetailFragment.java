@@ -24,8 +24,8 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class MovieDetailFragment extends Fragment implements View.OnClickListener{
-    private static final int MAX_WIDTH = 400;
-    private static final int MAX_HEIGHT = 300;
+    private static final int MAX_WIDTH = 800;
+    private static final int MAX_HEIGHT = 1198;
     @Bind(R.id.posterV) ImageView posterV;
     @Bind(R.id.titleV) TextView titleV;
     @Bind(R.id.yearV) TextView yearV;
@@ -62,7 +62,7 @@ public class MovieDetailFragment extends Fragment implements View.OnClickListene
         Picasso.with(view.getContext()).load(mMovie.getPosterPath()).resize(MAX_WIDTH, MAX_HEIGHT).centerCrop().into(posterV);
         titleV.setText(mMovie.getTitle());
         ratingV.setText(mMovie.getRating());
-        yearV.setText(mMovie.getReleaseDate());
+        yearV.setText("(" + mMovie.getReleaseDate() + ")");
         descV.setText(mMovie.getOverview());
 
         titleV.setOnClickListener(this);
