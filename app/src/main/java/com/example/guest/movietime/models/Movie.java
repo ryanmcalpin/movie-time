@@ -1,9 +1,12 @@
 package com.example.guest.movietime.models;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Guest on 6/1/17.
  */
 
+@Parcel
 public class Movie {
     private String mTitle;
     private String mOverview;
@@ -11,6 +14,9 @@ public class Movie {
     private String mPosterPath;
     private String mId;
     private String mRating;
+    private String mImdb;
+
+    public Movie() {}
 
     public Movie(String title, String overview, String posterPath, String releaseDate, String id, String rating){
         this.mTitle = title;
@@ -19,6 +25,7 @@ public class Movie {
         this.mPosterPath = posterPath;
         this.mId = id;
         this.mRating = rating;
+        this.mImdb = "http://www.imdb.com/find?ref_=nv_sr_fn&q=" + title + "&s=all";
     }
 
     public String getTitle() {
@@ -43,5 +50,9 @@ public class Movie {
 
     public String getRating() {
         return mRating + " / 10";
+    }
+
+    public String getImdb() {
+        return mImdb;
     }
 }
