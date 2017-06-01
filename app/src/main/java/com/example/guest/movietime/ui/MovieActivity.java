@@ -3,7 +3,9 @@ package com.example.guest.movietime.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.ListViewCompat;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -23,7 +25,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class MovieActivity extends AppCompatActivity {
-    @Bind(R.id.listView) ListView mListView;
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     public ArrayList<Movie> mMovies = new ArrayList<>();
 
     @Override
@@ -56,8 +58,11 @@ public class MovieActivity extends AppCompatActivity {
                         for (int i = 0; i < movieTitles.length; i++) {
                             movieTitles[i] = mMovies.get(i).getTitle();
                         }
-                        ArrayAdapter adapter = new ArrayAdapter(MovieActivity.this, android.R.layout.simple_list_item_1, movieTitles);
-                        mListView.setAdapter(adapter);
+                        MovieListAdapter adapter = new MovieListAdapter(getApplicationContext(), mMovies);
+                        mRecyclerView.setAdapter(adapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MovieActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }

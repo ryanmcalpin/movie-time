@@ -12,7 +12,7 @@ public class Movie {
     private String mId;
     private String mRating;
 
-    public Movie(String title, String overview, String releaseDate, String posterPath, String id, String rating){
+    public Movie(String title, String overview, String posterPath, String releaseDate, String id, String rating){
         this.mTitle = title;
         this.mOverview = overview;
         this.mReleaseDate = releaseDate;
@@ -30,11 +30,11 @@ public class Movie {
     }
 
     public String getReleaseDate() {
-        return mReleaseDate;
+        return mReleaseDate.substring(0, 4);
     }
 
     public String getPosterPath() {
-        return mPosterPath;
+        return "http://image.tmdb.org/t/p/w185/" + mPosterPath;
     }
 
     public String getId() {
@@ -42,6 +42,6 @@ public class Movie {
     }
 
     public String getRating() {
-        return mRating;
+        return mRating + " / 10";
     }
 }
