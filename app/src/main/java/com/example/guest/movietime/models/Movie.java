@@ -37,7 +37,11 @@ public class Movie {
     }
 
     public String getReleaseDate() {
-        return mReleaseDate.substring(0, 4);
+        if (mReleaseDate.equals("")) {
+            return mReleaseDate;
+        } else {
+            return mReleaseDate.substring(0, 4);
+        }
     }
 
     public String getPosterPath() {
